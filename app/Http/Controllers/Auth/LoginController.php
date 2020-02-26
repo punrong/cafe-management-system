@@ -49,7 +49,7 @@ class LoginController extends Controller
             return $this->redirectTo;
         }
         // $this->redirectTo = '/home';
-        $this->redirectTo = '/drinks/display';
+        $this->redirectTo = '/';
         return $this->redirectTo;
     }
 }

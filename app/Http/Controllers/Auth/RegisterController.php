@@ -78,7 +78,7 @@ class RegisterController extends Controller
     }
 
     public function redirectTo(){
-        $this->redirectTo = '/drinks/display';
+        $this->redirectTo = '/';
         return $this->redirectTo;
     }
 
