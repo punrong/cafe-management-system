@@ -1,6 +1,7 @@
 @extends('master')
 @section('title')
   <title>Log In</title>
+  <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('content')
 <section class="login is-fullheight">

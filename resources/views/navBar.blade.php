@@ -13,6 +13,17 @@
 
                 <div id="navMenu" class="navbar-menu">
                         <div class="navbar-start">
+                        @guest
+                        <a class="navbar-item" href="/">
+                                Home
+                        </a>
+                        <a class="navbar-item" href="/">
+                                Promotion
+                        </a>
+                        <a class="navbar-item" href="/">
+                                About Us
+                        </a>
+                        @endguest
                         @can('manage-users')
                         <a class="navbar-item" href="{{ route('admin.users.index') }}">
                                 Manage Users

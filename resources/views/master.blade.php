@@ -9,12 +9,11 @@
     <script src="https://kit.fontawesome.com/38dc1c38cf.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" >
-    <link href="{{ asset('css/register.css') }}" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="{{ asset('master style/style.css') }}">
         @yield('title')
 </head>
 <body>
-        @include('navbar');
+        @include('navbar')
         <div class='container'>
             @yield('content')
         </div>

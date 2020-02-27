@@ -1,6 +1,7 @@
 @extends('master')
 @section('title')
   <title>Register</title>
+  <link href="{{ asset('css/register.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('content')
 <section class="hero is-fullheight">

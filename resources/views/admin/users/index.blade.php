@@ -10,6 +10,7 @@
 @if(Session::has('error'))
     <h2 class=" title is-4" style="color: hsl(348, 100%, 61%);" align='center'>{{ Session::get('error')}}</h2>
 @endif
+<div class='table-container'>
     <table class='container'>
           <tr>
               <td>
@@ -62,5 +63,6 @@
           @endforeach
     </tbody>
   </table>
+</div>
   @include('admin.users.modalDelete')
 @endsection
