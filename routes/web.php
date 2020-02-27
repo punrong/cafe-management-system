@@ -1,10 +1,7 @@
 <?php
 
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // });
     Route::get('/', function () {
-        return view('landingPage.index');
+        return view('welcome');
     });
 
     Auth::routes();
@@ -12,10 +9,6 @@
     Route::get('/promotion', function(){
         return view('landingPage.promotion');
     });
-
-    // Route::get('/index', function(){
-    //     return view('landingPage.index');
-    // });
 
     Route::get('/home', 'HomeController@index')->name('home');
 

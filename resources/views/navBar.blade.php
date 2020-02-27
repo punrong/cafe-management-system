@@ -1,7 +1,7 @@
 <nav class="navbar white" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                         <a class="navbar-item" href="/">
-                                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                                <img src="{{ url('icons/logo.png') }}" width="112" height="28">
                         </a>
 
                         <a role="button" class="navbar-burger has-dropdown is-hoverable" aria-label="menu" aria-expanded="false" data-target="navMenu">

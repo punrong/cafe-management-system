@@ -29,7 +29,7 @@
             {{ method_field('PUT') }}
             <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">  
             <div class="field has-text-centered">
-              <img src="https://bulma.io/images/bulma-logo.png" width="167">
+              <img src="{{ url('icons/logo.png') }}" width="167">
             </div>
             
             <div class="field is-horizontal">

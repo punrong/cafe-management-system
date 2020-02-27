@@ -1,0 +1,19 @@
+.social-media {
+    margin-top: 30px;
+  }
+  
+  .social-media a {
+    margin-right: 10px;
+  }
+  
+  .field:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .row-one {
+    padding-top: 13px;
+  }
+  form .field {
+    margin: auto;
+    max-width: 740px;
+  }
