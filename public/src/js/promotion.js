@@ -3,36 +3,22 @@ const COFFEE = 'COFFEE';
 const TEA = 'TEA';
 
 const Model = (function() {
-	const data = [
-		{
-			id: 1,
-			name: 'Five RemG',
-			price: 2,
-			type: COFFEE,
-			src: './src/img/showcase.jpg'
-		},
-		{
-			id: 2,
-			name: 'Rem',
-			price: 5,
-			type: TEA,
-			src: './src/img/maid.jpeg'
-		},
-		{
-			id: 3,
-			name: 'Ichimaru Gin',
-			price: 7.99,
-			type: COFFEE,
-			src: './src/img/showcase.jpg'
-		},
-		{
-			id: 4,
-			name: 'Chitanda Eru',
-			price: 3.99,
-			type: TEA,
-			src: './src/img/maid.jpeg'
+	let data = [];
+	const ajax = new XMLHttpRequest();
+	const method = "GET";
+	const url = "http://localhost:8000/promotion.php";
+	const asynchronous = true;
+
+	ajax.open(method, url, asynchronous);
+	ajax.send();
+
+	ajax.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			data = JSON.parse(this.responseText);
+			console.log(data);
 		}
-	];
+	}
+
 	return {
 		data
 	};
@@ -118,6 +104,21 @@ const Controller = (function(Model, View) {
 	});
 
 	function EXECUTE() {
+		let data = [];
+		const ajax = new XMLHttpRequest();
+		const method = "GET";
+		const url = "http://localhost:8000/promotion.php";
+		const asynchronous = true;
+
+		ajax.open(method, url, asynchronous);
+		ajax.send();
+
+		ajax.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				data = JSON.parse(this.responseText);
+				View.renderMenu(data);
+			}
+		}
 		View.renderMenu(Model.data);
 	}
 

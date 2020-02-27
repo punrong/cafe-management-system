@@ -19,7 +19,6 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{asset('src/jquery-3.4.1.min.js')}}"></script>
     <script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('src/js/main.js')}}"></script>
     <link defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js">
 </body>
 </html>

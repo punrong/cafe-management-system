@@ -49,4 +49,5 @@
         <a href="#menu">Back to Promotion</a>
         <a href="#top">Back to Top</a>
     </footer>
+    <script src="{{asset('src/js/promotion.js')}}"></script>
 @endsection

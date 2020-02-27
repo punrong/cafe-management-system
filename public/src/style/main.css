@@ -55,6 +55,10 @@ html {
 	margin-bottom: 3%;
 }
 
+.move-left{
+	transform: translateX(-100px);
+}
+
 /* SHOWCASE */
 
 .showcase {
@@ -128,6 +132,10 @@ html {
 	.fullwidth {
 		width: 100%;
 	}
+
+	.move-left{
+		transform: translateX(0);
+	}
 }
 
 /* MENU CONTENT */
@@ -178,4 +186,20 @@ html {
 	height: 10vh;
 	background-color: #f8f9fa;
 	justify-content: space-around;
+}
+
+/* BULMA */
+
+.btn-p{
+	background-color: #00d1b2;
+	color: #fff !important;
+	font-size: bold !important;
+	border-color: transparent;
+}
+
+.btn-s{
+	border-color: transparent;
+	color: #fff !important;
+	font-size: bold !important;
+	background-color: #ff3860;
 }

@@ -32,8 +32,11 @@
             </div>
         </div>
         </nav>
+        <!-- PHP -->
+        <div class="row js_menu-content">
         
-        <div class="row js_menu-content"></div>
+        </div>
+        <!-- END PHP -->
     </div>
     <div class="page-number mb-5"></div>
     
@@ -46,14 +49,14 @@
                 <h1 style="font-size: 4.5rem;">Sign In / Sign UP</h1>
                 <span>Join us now to see various promotions</span>
                 <div>
-                    <a class="btn btn-primary mr-3" href="{{ route('register') }}">Sign Up</a>
-                    <a class="btn btn-primary" href="{{ route('login') }}">Sign In</a>
+                    <a class="btn btn-primary btn btn-s mr-3" href="{{ route('login') }}">Log In</a>
+                    <a class="btn btn-primary mr-3 btn btn-p" href="{{ route('register') }}">Sign Up</a>
                 </div>
             @else
                 <div class="showcase-content">
                 <h1>Promotion</h1>
                 <span>Buy before the expired date</span>
-                <a class="btn btn-primary" href="#promotion">Check the Promotion Now</a>
+                <a class="btn btn-primary" href="promotion">Check the Promotion Now</a>
             </div>
             @endguest
         </div>
@@ -64,4 +67,5 @@
         <a href="#menu">Back to Menu</a>
         <a href="#top">Back to Top</a>
     </footer>
+    <script src="{{asset('src/js/main.js')}}"></script>
 @endsection

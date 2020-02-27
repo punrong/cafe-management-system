@@ -1,53 +1,40 @@
 const NUM_PER_PAGE = 10;
-const COFFEE = 'COFFEE';
+const COFFEE = 'Coffee';
 const TEA = 'TEA';
 
 const Model = (function() {
-	const data = [
-		{
-			id: 1,
-			name: 'Five RemG',
-			price: 2,
-			type: COFFEE,
-			src: './src/img/showcase.jpg'
-		},
-		{
-			id: 2,
-			name: 'Rem',
-			price: 5,
-			type: TEA,
-			src: './src/img/maid.jpeg'
-		},
-		{
-			id: 3,
-			name: 'Ichimaru Gin',
-			price: 7.99,
-			type: COFFEE,
-			src: './src/img/showcase.jpg'
-		},
-		{
-			id: 4,
-			name: 'Chitanda Eru',
-			price: 3.99,
-			type: TEA,
-			src: './src/img/maid.jpeg'
+	let data = [];
+	const ajax = new XMLHttpRequest();
+	const method = "GET";
+	const url = "http://localhost:8000/drink.php";
+	const asynchronous = true;
+
+	ajax.open(method, url, asynchronous);
+	ajax.send();
+
+	ajax.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			data = JSON.parse(this.responseText);
+			console.log(data);
 		}
-	];
+	}
+
 	return {
 		data
 	};
 })();
 
 const View = (function() {
-	function createMenuItem({ name, price, src }) {
+	function createMenuItem({ name, unitPrice, img, temp }) {
 		const smallFont = name.length > 20 ? 1.5 : 1.75;
 		return `
         <div class="col-lg-4 col-md-6 menu-item">
             <div class="menu-item-content box-shadow">
-                <div class="menu-item-img" style="background-image: url(${src});"></div>
+                <div class="menu-item-img" style="background-image: url('../image/${img}');"></div>
                 <div class="menu-item-text">
 					<h3 style="font-size: ${smallFont}rem;">${name}</h3>
-					<span>Price: ${price}$</span>
+					<span>Price: ${unitPrice}$</span>
+					<span>Temperature: ${temp}</span>
                 </div>
             </div>
         </div>
@@ -130,6 +117,21 @@ const Controller = (function(Model, View) {
 	});
 
 	function EXECUTE() {
+		let data = [];
+		const ajax = new XMLHttpRequest();
+		const method = "GET";
+		const url = "http://localhost:8000/drink.php";
+		const asynchronous = true;
+
+		ajax.open(method, url, asynchronous);
+		ajax.send();
+
+		ajax.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				data = JSON.parse(this.responseText);
+				View.renderMenu(data);
+			}
+		}
 		View.renderMenu(Model.data);
 	}
 
