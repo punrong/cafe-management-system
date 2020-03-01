@@ -10,18 +10,30 @@
     <h2 class=" title is-4" style="color:hsl(348, 100%, 61%);" align='center'>{{ Session::get('error')}}</h2>
 @endif
 <div class='table-container'>
-<table class='container'>
-        <tr>
-            <td>
-                <form action="{{ url('promotion/search') }}" method="get">
-                <span class="file-label">
-                    <input class="input is-hovered" type="text" name='name' placeholder="Search Name">
-                    <button class="button is-link">Search</button>
-                </span>
-                </form>
-            </td>
-        </tr>
-  </table>
+
+<nav class='level'>
+      <div class='level-item'>
+        <form action="{{ url('promotion/search') }}" method="get">
+          <span class="file-label">
+            <input class="input is-hovered" type="text" name='name' placeholder="Search Name">
+            <button class="button is-link"><strong>Search</strong></button>
+          </span>
+        </form>
+      </div>
+  </nav>
+
+  <nav class='level'>
+    <div class='level-item has-icons-left'>
+      @can('manage-drinks')
+        <button class="button is-success modal-button" class='level-right' id='btn_add' data-target="#addModal" aria-haspopup="true">
+            <strong>Add More Promotions</strong>
+            <span class="icon is-small is-left">
+                <i class="fas fa-plus-circle"></i>
+            </span>
+        </button>
+      @endcan
+    </div>
+  </nav>
 
 <table class="container table is-striped is-hoverable ">
   <thead>
@@ -60,26 +72,19 @@
                       @can('edit-promotions')
                       <td>
                           <form action = "{{ url('promotion/edit/'.$promotion->id)}}" method = "get">
-                              <button class="button is-success">Edit</button>
+                              <button class="button is-success"><strong>Edit</strong></button>
                           </form>
                       </td>
                       @endcan
                       @can('delete-promotions')
                       <td>
                           <a id='delete_form' onclick="modalDeleteFunction({{$promotion->id}})">
-                              <button class="button is-danger" aria-haspopup="true">Remove</button>  
+                              <button class="button is-danger" aria-haspopup="true"><strong>Remove</strong></button>  
                           </a>
                       </td>
                       @endcan
                   </tr>
           @endforeach
-          @can('manage-promotions')
-          <tr>
-            <td>
-                <button class="button is-link modal-button" id='btn_add' data-target="#addModal" aria-haspopup="true">Add</button>
-            </td>
-          </tr>
-          @endcan
   </tbody>
 </table>
 </div>

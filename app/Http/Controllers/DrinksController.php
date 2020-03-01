@@ -82,11 +82,11 @@ class DrinksController extends Controller
 
     public function search(Request $request)
     {
-        $drinks = Drinks::where('name', '=', $request->get('name'))->get();
-        if ($drinks != null) {
-            return view('drinks.search')->with('drinks', $drinks);
+        $drink = Drinks::where('name', '=', $request->get('name'))->first();
+        if ($drink != null) {
+            return view('drinks.search')->with('drink', $drink);
         } else {
-            $request->session()->flash('error','Cannot find this drink '.$request->get('name'));
+            $request->session()->flash('error',"Cannot find this drink '".$request->get('name')."'");
             return redirect()->back();;
         }
     }

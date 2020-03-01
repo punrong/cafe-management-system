@@ -10,7 +10,7 @@
         <tr>
             <th>
                 <form action="{{ url('drinks/display') }}" method="get">
-                    <button class="button is-link">Go Back</button>
+                    <button class="button is-link"><strong>Go Back</strong></button>
                 </form>
             </th>
             <th></th>
@@ -39,11 +39,10 @@
     </tr>
   </thead>
   <tbody>
-  @foreach($drinks as $drink)
                 <tr>
                     <td>{{$drink->id}}</td>
                     <td>{{$drink->name}}</td>
-                    <td>{{$drink->unit_price}}</td>
+                    <td>{{$drink->unit_price}}$</td>
                     <td>{{$drink->type}}</td>
                     <td>{{$drink->temperature}}</td>
                     <td>
@@ -57,19 +56,18 @@
                     @can('edit-drinks')
                     <td>
                         <form action = "{{ url('drinks/edit/'.$drink->id) }}" method = "get">
-                            <button class="button is-success">Edit</button>
+                            <button class="button is-success"><strong>Edit</strong></button>
                         </form>
                     </td>
                     @endcan
                     @can('delete-drinks')
                     <td>
                           <a id='delete_form' onclick="modalDeleteFunction({{$drink->id}})">
-                              <button class="button is-danger" aria-haspopup="true">Remove</button>  
+                              <button class="button is-danger" aria-haspopup="true"><strong>Remove</strong></button>  
                           </a>
                     </td>
                     @endcan
                 </tr>
-          @endforeach
   </tbody>
 </table>
 </div>

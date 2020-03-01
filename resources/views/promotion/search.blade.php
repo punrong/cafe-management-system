@@ -16,7 +16,7 @@
         <tr>
             <th>
                 <form action="{{ url('promotion/display') }}" method="get">
-                    <button class="button is-link">Go Back</button>
+                    <button class="button is-link"><strong>Go Back</strong></button>
                 </form>
             </th>
             <th></th>
@@ -45,7 +45,6 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($promotions as $promotion)
                 <tr>
                     <td>{{$promotion->id}}</td>
                     <td>{{$promotion->name}}</td>
@@ -63,19 +62,18 @@
                     @can('edit-promotions')
                     <td>
                         <form action = "{{ url('promotion/edit/'.$promotion->id) }}" method = "get">
-                            <button class="button is-success">Edit</button>
+                            <button class="button is-success"><strong>Edit</strong></button>
                         </form>
                     </td>
                     @endcan
                     @can('delete-promotions')
                     <td>
                           <a id='delete_form' onclick="modalDeleteFunction({{$promotion->id}})">
-                              <button class="button is-danger" aria-haspopup="true">Remove</button>  
+                              <button class="button is-danger" aria-haspopup="true"><strong>Remove</strong></button>  
                           </a>
                     </td>
                     @endcan
                 </tr>
-      @endforeach
   </tbody>
 </table>
 </div>

@@ -17,7 +17,7 @@
                   <form action="/admin/users/search" method="get">
                     <span class="file-label">
                         <input class="input is-hovered" type="text" name='name' placeholder="Search Name">
-                        <button class="button is-link">Search</button>
+                        <button class="button is-link"><strong>Search</strong></button>
                     </span>
                   </form>
               </td>
@@ -48,14 +48,14 @@
                       @can('edit-users')
                       <td>
                           <a href="{{ route('admin.users.edit', $user) }}">
-                              <button class="button is-success">Edit</button>
+                              <button class="button is-success"><strong>Edit</strong></button>
                           </a>
                       </td>
                       @endcan
                       @can('edit-users')
                       <td>
                           <a id='delete_form' onclick="modalDeleteFunction({{$user->id}})">
-                              <button class="button is-danger" aria-haspopup="true">Remove</button>  
+                              <button class="button is-danger" aria-haspopup="true"><strong>Remove</strong></button>  
                           </a>
                       </td>
                       @endcan

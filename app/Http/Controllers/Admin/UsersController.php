@@ -37,11 +37,11 @@ class UsersController extends Controller
 
     public function search(Request $request)
     {
-        $users = User::where('name', '=', $request->get('name'))->get();
-        if ($users != null) {
-            return view('admin.users.search')->with('users', $users);
+        $user = User::where('name', '=', $request->get('name'))->first();
+        if ($user !== null) {
+            return view('admin.users.search')->with('user', $user);
         } else{
-            $request->session()->flash('error','Cannot find this user '.$request->get('name'));
+            $request->session()->flash('error',"Cannot find this user '".$request->get('name')."'");
             return redirect()->back();
         }
     }
@@ -53,9 +53,9 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         if($user->save()){
-            $request->session()->flash('success',$user->name.' has been updated');
+            $request->session()->flash('success',"'".$user->name."' has been updated");
         }else{
-            $request->session()->flash('error','There was an error updating this user '.$user->name);
+            $request->session()->flash('error',"There was an error updating this user '".$user->name."'");
         }
 
         return redirect()->route('admin.users.index');

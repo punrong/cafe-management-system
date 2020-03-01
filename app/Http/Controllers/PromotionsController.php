@@ -83,11 +83,11 @@ class PromotionsController extends Controller
 
     public function search(Request $request)
     {
-        $promotions = Promotion::where('name', '=', $request->get('name'))->get();
-        if ($promotions != null) {
-            return view('promotion.search')->with('promotions', $promotions);
+        $promotion = Promotion::where('name', '=', $request->get('name'))->first();
+        if ($promotion != null) {
+            return view('promotion.search')->with('promotion', $promotion);
         } else {
-            $request->session()->flash('error','Please make sure you have valid inputs');
+            $request->session()->flash('error',"Cannot find this promotion '".$request->get('name')."'");
             return redirect()->back();;
         }
     }
