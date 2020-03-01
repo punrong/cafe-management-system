@@ -4,9 +4,9 @@
         <div class="showcase-content">
             <h1>CofTea</h1>
             <span>Your Favorite Online Coffee and Tea Orderer</span>
-            <a class="btn btn-primary" href="#menu">Check the Menu Now</a>
+            <a class="btn btn-success" href="#menu">Check the Menu Now</a>
         </div>
-    </div>
+</div>
     
     <!-- MENU -->
     
@@ -21,7 +21,7 @@
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="mr-auto">
-                <button class="btn btn-primary mr-3 mb-3 fullwidth js_menu-bar-all">All</button>
+                <button class="btn btn-success mr-3 mb-3 fullwidth js_menu-bar-all">All</button>
                 <button class="btn btn-primary mr-3 mb-3 fullwidth js_menu-bar-coffee">Coffee</button>
                 <button class="btn btn-primary mb-3 fullwidth js_menu-bar-tea">Tea</button>
             </div>
@@ -46,11 +46,11 @@
     <div class="showcase showcase-promotion">
         <div class="showcase-content">
             @guest
-                <h1 style="font-size: 4.5rem;">Sign In / Sign UP</h1>
+                <h1 style="font-size: 4.5rem;">Log In / Sign UP</h1>
                 <span>Join us now to see various promotions</span>
                 <div>
-                    <a class="btn btn-primary btn btn-s mr-3" href="{{ route('login') }}">Log In</a>
-                    <a class="btn btn-primary mr-3 btn btn-p" href="{{ route('register') }}">Sign Up</a>
+                    <a class="btn btn-primary btn btn-s mr-3" href="{{ route('login') }}"><strong>Log In</strong></a>
+                    <a class="btn btn-primary mr-3 btn btn-p" href="{{ route('register') }}"><strong>Sign Up</strong></a>
                 </div>
             @else
                 <div class="showcase-content">
@@ -63,9 +63,15 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="footer centeralize">
-        <a href="#menu">Back to Menu</a>
-        <a href="#top">Back to Top</a>
+    <footer class="footer">
+        <div class="centeralize" style="display: flex; justify-content: space-around; width: 100%; padding-top: 1rem;">
+            <a href="#menu">Back to Menu</a>
+            <a href="#top">Back to Top</a>
+        </div>
+        <hr>
+        <div class="centeralize">
+            <p>&#9400;Copyright by CofTea. Designed and built by SLS G20.</p>
+        </div>
     </footer>
     <script src="{{asset('src/js/main.js')}}"></script>
 @endsection

@@ -12,12 +12,12 @@
             @else
                 <a class="nav-item nav-link" href="promotion">Promotion</a>
             @endif
-                <a class="nav-item nav-link" href="#">About Us</a>
+                <a class="nav-item nav-link" href="aboutus">About Us</a>
             </div>
             <div class="navbar-nav">
                 @guest
-                    <a class="nav-item nav-link btn btn-s"  href="{{ route('login') }}">Log In</a>
-                    <a class="nav-item nav-link btn btn-p ml-3" href="{{ route('register') }}">Sign Up</a> 
+                    <a class="nav-item nav-link btn btn-s"  href="{{ route('login') }}"><strong>Log In</strong></a>
+                    <a class="nav-item nav-link btn btn-p ml-3" href="{{ route('register') }}"><strong>Sign Up</strong></a> 
                 @else
                     <!-- <div class="navbar-item has-dropdown is-hoverable">
                         <a id="navbarDropdown" class="navbar-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

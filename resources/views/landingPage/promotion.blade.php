@@ -5,7 +5,7 @@
         <div class="showcase-content">
             <h1>Promotion</h1>
             <span>Buy before the expired date</span>
-            <a class="btn btn-primary" href="#promotion">Check the Promotion Now</a>
+            <a class="btn btn-success" href="#promotion">Check the Promotion Now</a>
         </div>
     </div>
 
@@ -38,16 +38,44 @@
     <!-- MENU -->
     <div class="showcase showcase-homepage">
         <div class="showcase-content">
-            <h1>Menu</h1>
+            <h1 id="menu">Menu</h1>
             <span>Go to Menu and Check Our Item Now</span>
             <a class="btn btn-primary" href="/">Check the Menu Now</a>
         </div>
     </div>
 
+    <!-- MODAL -->
+    <div class="modal fade" id="promotion-info" tabindex="-1" role="dialog" aria-labelledby="promotion-infoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title js_promotion-info-title" id="promotion-infoLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>Condition:</span><br/>
+                    <div class="js_promotion-info-body"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
-    <footer class="footer centeralize">
-        <a href="#menu">Back to Promotion</a>
-        <a href="#top">Back to Top</a>
+    <footer class="footer">
+        <div class="centeralize" style="display: flex; justify-content: space-around; width: 100%; padding-top: 1rem;">
+            <a href="#promotion">Back to Promotion</a>
+            <a href="#top">Back to Top</a>
+        </div>
+        <hr>
+        <div class="centeralize">
+            <p>&#9400;Copyright by CofTea. Designed and built by SLS G20.</p>
+        </div>
     </footer>
     <script src="{{asset('src/js/promotion.js')}}"></script>
 @endsection

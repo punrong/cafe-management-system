@@ -1,23 +1,9 @@
 const NUM_PER_PAGE = 10;
 const COFFEE = 'Coffee';
-const TEA = 'TEA';
+const TEA = 'Tea';
 
 const Model = (function() {
 	let data = [];
-	const ajax = new XMLHttpRequest();
-	const method = "GET";
-	const url = "http://localhost:8000/drink.php";
-	const asynchronous = true;
-
-	ajax.open(method, url, asynchronous);
-	ajax.send();
-
-	ajax.onreadystatechange = function(){
-		if(this.readyState == 4 && this.status == 200){
-			data = JSON.parse(this.responseText);
-			console.log(data);
-		}
-	}
 
 	return {
 		data
@@ -46,6 +32,9 @@ const View = (function() {
 	}
 
 	function renderPageNumber(menuItems, curPage) {
+		if (menuItems.length === 0) {
+			return;
+		}
 		document.querySelector('.page-number').innerHTML = '';
 
 		const totalPage = Math.ceil(menuItems.length / NUM_PER_PAGE);
@@ -62,17 +51,17 @@ const View = (function() {
 
 	function renderMenu(menuItems, type = 'ALL', curPage = 1) {
 		document.querySelector('.js_menu-content').innerHTML = '';
-
-		if (menuItems.length === 0) {
-			document.querySelector('.js_menu-content').insertAdjacentHTML('beforeend', `<h3>No Item to Show</h3>`);
-			return;
-		}
-
+		
 		let newMenuItems;
 		if (type !== 'ALL') {
 			newMenuItems = menuItems.filter((menuItem) => menuItem.type === type);
 		} else {
 			newMenuItems = menuItems;
+		}
+
+		if (newMenuItems.length === 0) {
+			document.querySelector('.js_menu-content').insertAdjacentHTML('beforeend', `<h3>No Item to Show</h3>`);
+			return;
 		}
 
 		newMenuItems.slice(curPage * NUM_PER_PAGE - NUM_PER_PAGE, curPage * NUM_PER_PAGE).forEach((item) => {
@@ -129,10 +118,10 @@ const Controller = (function(Model, View) {
 		ajax.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200){
 				data = JSON.parse(this.responseText);
+				Model.data = [...data];
 				View.renderMenu(data);
 			}
 		}
-		View.renderMenu(Model.data);
 	}
 
 	return {

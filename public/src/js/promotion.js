@@ -4,20 +4,6 @@ const TEA = 'TEA';
 
 const Model = (function() {
 	let data = [];
-	const ajax = new XMLHttpRequest();
-	const method = "GET";
-	const url = "http://localhost:8000/promotion.php";
-	const asynchronous = true;
-
-	ajax.open(method, url, asynchronous);
-	ajax.send();
-
-	ajax.onreadystatechange = function(){
-		if(this.readyState == 4 && this.status == 200){
-			data = JSON.parse(this.responseText);
-			console.log(data);
-		}
-	}
 
 	return {
 		data
@@ -25,16 +11,23 @@ const Model = (function() {
 })();
 
 const View = (function() {
-	function createMenuItem({ name, price, src }) {
+	function createMenuItem({ id, name, img, startDate, endDate }) {
 		const smallFont = name.length > 20 ? 1.5 : 1.75;
 		return `
         <div class="col-lg-4 col-md-6 menu-item">
-            <div class="menu-item-content box-shadow">
-                <div class="menu-item-img" style="background-image: url(${src});"></div>
-                <div class="menu-item-text">
+		<div class="menu-item-content box-shadow">
+			<div class="menu-item-img" style="background-image: url('../image/${img}');"></div>
+			<div class="menu-item-text">
 					<h3 style="font-size: ${smallFont}rem;">${name}</h3>
-					<span>Price: ${price}$</span>
-                </div>
+					<span>Start Date: ${startDate}</span>
+					<span>End Date: ${endDate}</span>
+				</div>
+				<hr>
+				<div class="centeralize">
+				<button id="${id}" type="button" class="btn btn-primary js_promotion-info" data-toggle="modal" data-target="#promotion-info">
+        			Read More
+				</button>
+				</div>
             </div>
         </div>
         `;
@@ -61,17 +54,17 @@ const View = (function() {
 
 	function renderMenu(menuItems, type = 'ALL', curPage = 1) {
 		document.querySelector('.js_menu-content').innerHTML = '';
-
-		if (menuItems.length === 0) {
-			document.querySelector('.js_menu-content').insertAdjacentHTML('beforeend', `<h3>No Item to Show</h3>`);
-			return;
-		}
-
+		
 		let newMenuItems;
 		if (type !== 'ALL') {
 			newMenuItems = menuItems.filter((menuItem) => menuItem.type === type);
 		} else {
 			newMenuItems = menuItems;
+		}
+
+		if (newMenuItems.length === 0) {
+			document.querySelector('.js_menu-content').insertAdjacentHTML('beforeend', `<h3>No Item to Show</h3>`);
+			return;
 		}
 
 		newMenuItems.slice(curPage * NUM_PER_PAGE - NUM_PER_PAGE, curPage * NUM_PER_PAGE).forEach((item) => {
@@ -91,7 +84,7 @@ const Controller = (function(Model, View) {
 
 	document.querySelector('.js_input-search').addEventListener('keyup', (e) => {
 		const items = Model.data
-			.filter((d) => d.type === Current_Type)
+			// .filter((d) => d.type === Current_Type)
 			.filter((d) => d.name.toLowerCase().includes(e.target.value.toLowerCase()));
 		View.renderMenu(items);
 	});
@@ -102,6 +95,18 @@ const Controller = (function(Model, View) {
 			View.renderMenu(Model.data, Current_Type, pageNum);
 		}
 	});
+
+	function addEventToButton() {
+		document.querySelectorAll('.js_promotion-info').forEach((btn) =>
+			btn.addEventListener('click', (e) => {
+				console.log(typeof Model.data[0].id);
+				console.log(e.target.id);
+				const data = Model.data.find((d) => d.id === e.target.id);
+				document.querySelector('.js_promotion-info-title').innerHTML = data.name;
+				document.querySelector('.js_promotion-info-body').innerHTML = data.condition;
+			})
+		);
+	}
 
 	function EXECUTE() {
 		let data = [];
@@ -116,11 +121,14 @@ const Controller = (function(Model, View) {
 		ajax.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200){
 				data = JSON.parse(this.responseText);
+				Model.data = [...data];
 				View.renderMenu(data);
+				addEventToButton();
 			}
 		}
-		View.renderMenu(Model.data);
 	}
+
+	
 
 	return {
 		EXECUTE
