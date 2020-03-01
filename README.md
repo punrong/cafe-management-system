@@ -1,4 +1,4 @@
-<p align="center"><img src="{{ url('icons/logo.png') }}" width="400"></p>
+![CofTea Logo](public/icons/logo.png)
 
 ## About CofTea
 
