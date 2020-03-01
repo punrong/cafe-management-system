@@ -1,4 +1,4 @@
-<p align="center">![CofTea Logo](public/icons/logo.png)</p>
+![CofTea Logo](public/icons/logo.png)
 
 ## About CofTea
 
