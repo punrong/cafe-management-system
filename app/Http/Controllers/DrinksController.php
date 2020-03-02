@@ -73,10 +73,10 @@ class DrinksController extends Controller
             $drink->image = $files->getClientOriginalName();
             
             $drink->save();
-                $request->session()->flash('success','This drink '.$request->get('name').' has been added');
+                $request->session()->flash('success',"This drink '".$request->get('name')."' has been added");
         }
         else
-            $request->session()->flash('error','Cannot add this drink '.$request->get('name'));
+            $request->session()->flash('error',"Cannot add this drink '".$request->get('name')."'");
         return redirect()->back();;      
     }
 
@@ -121,7 +121,7 @@ class DrinksController extends Controller
                     'temperature' => $request->get('temperature')
                 ]);
             }
-        $request->session()->flash('success','This drink '.$request->get('name').' has been updated');
+        $request->session()->flash('success',"This drink '".$request->get('name')."' has been updated");
 
         request()->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'

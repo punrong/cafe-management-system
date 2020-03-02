@@ -38,8 +38,8 @@
 <table class="container table is-striped is-hoverable ">
   <thead>
     <tr>
-      <th>Promotion ID</th>
-      <th>Promotion Name</th>
+      <th>ID</th>
+      <th>Name</th>
       <th>Image</th>
       <th>Status</th>
       <th>Start Date</th>

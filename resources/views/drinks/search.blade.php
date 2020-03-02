@@ -23,11 +23,11 @@
             <th></th>
         </tr>
     <tr>
-      <th>Drink ID</th>
-      <th>Drink Name</th>
-      <th>Unit Price</th>
-      <th>Drink Type</th>
-      <th>Drink Temperature</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Type</th>
+      <th>Temperature</th>
       <th>Image</th>
       <th>Status</th>
       @can('edit-drinks')

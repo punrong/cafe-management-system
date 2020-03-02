@@ -25,8 +25,8 @@
 
                 <div class="column is-12 field-box">
                   <div class="column is-7 is-offset-1">
-                    <h1 class="login-heading">Welcome to the Site</h1>
-                    <p class="login-subheading">Fill out thisto access super awesome imaginary control panel</p>
+                    <h1 class="login-heading">Welcome to CofTea</h1>
+                    <p class="login-subheading">Log in now to access your super awesome privilege</p>
                     <form method="POST" action="{{ route('login') }}">
                        @csrf
                       <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">

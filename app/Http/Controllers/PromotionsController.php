@@ -53,7 +53,7 @@ class PromotionsController extends Controller
             ]);
 
             if ($validator->fails()) {
-                $request->session()->flash('error','Cannot add this promotion '.$request->get('name').'. Please make sure you have valid input');
+                $request->session()->flash('error',"Cannot add this promotion '".$request->get('name')."'. Please make sure you have valid input");
                 return redirect()->back();
            }
 
@@ -75,7 +75,7 @@ class PromotionsController extends Controller
             $promotion->image = $files->getClientOriginalName();
             
             $promotion->save();
-                $request->session()->flash('success','This promotion '.$request->get('name').' has been added');
+                $request->session()->flash('success',"This promotion '".$request->get('name')."' has been added");
         }
         return redirect()->back();; 
     }
@@ -132,7 +132,7 @@ class PromotionsController extends Controller
                     'status' => $request->get('status')
                 ]);
             }
-        $request->session()->flash('success','This promotion '.$request->get('name').' has been updated');
+        $request->session()->flash('success',"This promotion '".$request->get('name')."' has been updated");
 
         request()->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'

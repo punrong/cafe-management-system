@@ -26,9 +26,9 @@
   <table class="container table is-striped is-hoverable" style='margin-top: 20px;'>
     <thead>
       <tr>
-        <th>User ID</th>
-        <th>User Name</th>
-        <th>User Role</th>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Role</th>
         <th>Email</th>
         @can('edit-users')
         <th>Edit</th>
